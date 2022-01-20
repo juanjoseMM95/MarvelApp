@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-4 col-sm-6 animate__animated animate__bounce anime_faster" *ngFor="let comic of resultados">
+        <div class="card">
+            <p class="card-text text-center h6">
+                {{ comic.name }}
+            </p>
+   
+            <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}"
+                 alt="{{ comic.name }}"
+                 class="img-thumbnail h-100">
+             
+            <div class="card-footer text-center">
+                <button 
+                class="btn btn-outline-danger btn-sm"
+                (click) = "openDialog(comic)"
+                >
+                Más detalles
+                </button>
+            </div>
+        </div>  
+    </div>
+</div>
+

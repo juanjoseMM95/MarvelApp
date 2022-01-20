@@ -1,0 +1,56 @@
+/* div{
+    border: 1px solid black;
+} */
+
+button{
+    color: red;
+    font-size: 12px;
+    background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#iconClose{
+    width: 50px;
+    height: 20px;
+}
+
+#iconFavourites{
+    width: 20px;
+    height: 20px;
+}
+#iconShopping{
+    width: 20px;
+    height: 20px; 
+}
+
+#contbtnCerrar{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10px;
+}
+
+.text{
+    font-size: 15px;
+}
+
+#contFavourites{
+background-color: rgb(50, 40, 39);
+padding: 10px;
+}
+
+#contShopping{
+    background-color: rgb(220, 220, 220);
+    padding: 10px;
+}
+span{
+    font-weight: bold;
+}
+
+h4{
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}

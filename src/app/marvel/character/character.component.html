@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row" id="contbtnCerrar">
+        <img [src]=" btnCerrar" id="iconClose">
+    </div>
+    <div class="row" >
+        <div class=" col-5 animate__animated animate__fadeIn anime_faster" *ngFor="let comic of resultados">
+            <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}"
+            alt="{{ comic.name }}"
+            class="img-thumbnail"
+            >         
+        </div>
+
+        <div class="col-7" *ngFor="let comic of resultados">
+            <h4 class="text" >{{ comic.name }}</h4>
+            <p class="text">{{ comic.description }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center" id="contFavourites">
+            <img [src]= iconFavourites id="iconFavourites">
+            <button> <span>ADDED TO FAVOURITES</span></button>
+        </div>
+       <div class="col text-center" id="contShopping">
+            <img [src]= iconShopping id="iconShopping">
+            <button> <span>BUY FOR $3.99</span> </button>
+       </div>
+    </div>
+
+</div>
