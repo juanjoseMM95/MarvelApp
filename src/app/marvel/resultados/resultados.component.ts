@@ -21,7 +21,7 @@ export class ResultadosComponent {
 
   openDialog(comic: Result){
     this.marvelService.personajeSeleccionado = comic.name;
-    this.marvelService.buscarComics(comic.name);
+    this.marvelService.DetalleComic(comic.name);
     this.modalService.open(CharacterComponent, { windowClass : "myCustomModalClass"});
   }
 

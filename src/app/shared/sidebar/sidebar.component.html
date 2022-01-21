@@ -3,7 +3,7 @@
 
     <hr class="text-white">
 
-    <div class="list-group list-reset">
+    <div class="list-group list-reset cont1">
       <a
       *ngFor="let elem of historial"
       (click)="buscar(elem)"
@@ -12,5 +12,18 @@
       {{ elem }}
     </a>
     </div>
+
+    <hr class="text-white">
+
+    <div class="cont2">
+      <button type="button" class="btn btn-warning btn-block"
+      (click)="VerFavoritos()"
+      > <b>Favoritos</b> </button>
+      <button type="button" class="btn btn-warning btn-block"
+      (click)="GeneraAleatorios()"
+      > <b>Generar aleatorios</b> </button>
+
+    </div>
+
   </div>
 

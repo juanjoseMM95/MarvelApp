@@ -3,7 +3,8 @@ import { MarvelService } from '../../marvel/services/marvel.service';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html'
+  templateUrl: './sidebar.component.html',
+  styleUrls:['./sidebar.component.css']
 })
 export class SidebarComponent {
 
@@ -16,4 +17,13 @@ export class SidebarComponent {
   buscar(termino:string){
     this.marvelService.buscarComics(termino);
   }
+
+  VerFavoritos(){
+    this.marvelService.MostrarFavoritos();
+  }
+
+  GeneraAleatorios(){
+    this.marvelService.GeneraAleatorios();
+  }
+
 }

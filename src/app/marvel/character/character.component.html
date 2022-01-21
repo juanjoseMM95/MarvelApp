@@ -1,25 +1,33 @@
 <div class="container">
-    <div class="row" id="contbtnCerrar">
-        <img [src]=" btnCerrar" id="iconClose">
+    <div class="modal-header" id="contbtnCerrar">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="closeModal()"
+        >                 
+            <img [src]=" btnCerrar" id="iconClose">
+        </button>
     </div>
-    <div class="row" >
-        <div class=" col-5 animate__animated animate__fadeIn anime_faster" *ngFor="let comic of resultados">
-            <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}"
-            alt="{{ comic.name }}"
-            class="img-thumbnail"
-            >         
-        </div>
-
-        <div class="col-7" *ngFor="let comic of resultados">
-            <h4 class="text" >{{ comic.name }}</h4>
-            <p class="text">{{ comic.description }}</p>
+    <div class="modal-body" >
+        <div class="row">
+            <div class=" col-5 animate__animated animate__fadeIn anime_faster" *ngFor="let comic of resultados">
+                <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}"
+                alt="{{ comic.name }}"
+                class="img-thumbnail"
+                >         
+            </div>
+    
+            <div class="col-7" *ngFor="let comic of resultados">
+                <h4 class="text" >{{ comic.name }}</h4>
+                <p class="text">{{ comic.description }}</p>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col text-center" id="contFavourites">
+    <div class="modal-footer">
+        <div class="col text-center" id="contFavourites" *ngFor="let comic of resultados"> 
             <img [src]= iconFavourites id="iconFavourites">
-            <button> <span>ADDED TO FAVOURITES</span></button>
+            <button
+            (click)="AnadirFavoritos(comic)"
+            > <span>ADDED TO FAVOURITES</span></button>
         </div>
        <div class="col text-center" id="contShopping">
             <img [src]= iconShopping id="iconShopping">
@@ -28,3 +36,4 @@
     </div>
 
 </div>
+

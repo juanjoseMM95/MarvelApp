@@ -1,0 +1,10 @@
+.cont1{
+    height: 70vh;
+}
+
+.cont2{
+    height: 6vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+}

@@ -14,6 +14,10 @@ export class MarvelService {
   private servicioUrl: string = "https://gateway.marvel.com:443/v1/public/characters"
   private _historial: string[] = [];
   public resultadosBus: Result[] = [];
+  public resultadosDetalles: Result[] = [];
+  public resultadosAleatorios: Result[] = [];
+  public favoritos:Result[] = [];
+  public tempAleatorios: number[] = [];
 
   public personajeSeleccionado: string = "";
 
@@ -22,7 +26,6 @@ export class MarvelService {
     //petición para que cargue todas las imágenes
     this.http.get<SearchMarvelResponse>(`https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=5a1ca8d6edc204a1f94e4e006901eb02&hash=3b5be3d0cdce6506c6b4d3e005b9a1f5`)
     .subscribe((resp)=>{
-      console.log(resp.data);
       this.resultadosBus = resp.data.results;
     })
 
@@ -35,6 +38,7 @@ export class MarvelService {
     return [...this._historial];
   }
 
+
   buscarComics(query: string){
 
     //elimine espacios y siempre la ponga en minuscula
@@ -42,8 +46,8 @@ export class MarvelService {
 
     if(!this._historial.includes(query)){
       this._historial.unshift(query);
-      //configuración del historial para almacenar 10 valores
-      this._historial = this.historial.splice(0,10);
+      //configuración del historial para almacenar 8 valores
+      this._historial = this.historial.splice(0,8);
       localStorage.setItem('historial',JSON.stringify(this._historial));
     }
 
@@ -55,6 +59,34 @@ export class MarvelService {
     })
   }
 
+  DetalleComic(query: string){
+
+    //elimine espacios y siempre la ponga en minuscula
+    query = query.trim().toLowerCase();
+
+    if(!this._historial.includes(query)){
+      this._historial.unshift(query);
+      //configuración del historial para almacenar 8 valores
+      this._historial = this.historial.splice(0,8);
+      localStorage.setItem('historial',JSON.stringify(this._historial));
+    }
 
 
-}
+    this.http.get<SearchMarvelResponse>(`https://gateway.marvel.com:443/v1/public/characters?name=${ query }&limit=10&ts=1&apikey=5a1ca8d6edc204a1f94e4e006901eb02&hash=3b5be3d0cdce6506c6b4d3e005b9a1f5`)
+    .subscribe((resp)=>{
+      this.resultadosDetalles = resp.data.results;
+    })
+  }
+
+  MostrarFavoritos(){
+    this.resultadosBus = this.favoritos;
+  }
+
+  GeneraAleatorios(){
+    this.resultadosBus.sort(() => Math.random() - Math.random()).slice(0, 3)
+    this.resultadosBus.splice(3,this.resultadosBus.length);
+  }
+
+  }
+
+
